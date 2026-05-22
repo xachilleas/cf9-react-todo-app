@@ -3,6 +3,7 @@ import {useRef} from "react";
 import {useTodos} from "./hooks/useTodos.ts";
 import TodoList from "./TodoList.tsx";
 import TodoStats from "./TodoStats.tsx";
+import Button from "../../shared/ui/Button.tsx";
 
 const TodoApp = () => {
     const inputRef = useRef<HTMLInputElement>(null);
@@ -26,7 +27,12 @@ const TodoApp = () => {
                     onEdit={editTodo}
                     onDelete={deleteTodo}
                 />
-                <TodoStats todos={todos/>}
+                <TodoStats todos={todos}/>
+                <Button
+                    addClasses="bg-cf-dark-red"
+                    label="Clear All"
+                    onClick={clearAll}
+                    />
             </div>
         </>
     )
