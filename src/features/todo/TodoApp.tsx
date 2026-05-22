@@ -1,6 +1,8 @@
 import TodoForm from "./TodoForm.tsx";
 import {useRef} from "react";
 import {useTodos} from "./hooks/useTodos.ts";
+import TodoList from "./TodoList.tsx";
+import TodoStats from "./TodoStats.tsx";
 
 const TodoApp = () => {
     const inputRef = useRef<HTMLInputElement>(null);
@@ -16,11 +18,15 @@ const TodoApp = () => {
         <>
             <div className="max-w-sm mx-auto pb-12">
                 <h1 className="text-center text-2xl py-8">To-Do List</h1>
-
                 <TodoForm onAdd={handleAdd} inputRef={inputRef} />
 
-
-
+                <TodoList
+                    todos={todos}
+                    onToggle={toggleTodo}
+                    onEdit={editTodo}
+                    onDelete={deleteTodo}
+                />
+                <TodoStats todos={todos/>}
             </div>
         </>
     )
